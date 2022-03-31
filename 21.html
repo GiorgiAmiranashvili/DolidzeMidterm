@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>21</title>
+        
+		<style>
+        
+          body {
+        
+        	background-color: #145A32;
+         }
+        
+          section {
+          
+        	text-align:center;
+         }
+         
+          header {
+         
+		   	height: 50px;
+		  	background-color: #17202A;
+		   	text-align: center;
+           	color: white;
+		 }
+         
+          footer {
+              
+		   	height: 30px;
+		   	background-color: #17202A;
+		   	text-align: center;
+           	color: white;
+		 }
+         
+		  nav {
+          
+		    height: 20px;
+		  }
+          
+		  img {
+          
+     		border-radius: 7px;
+		    width: 100px;
+		  }
+         
+		  #PC,#ME {
+          
+		    font-size: 30px;
+			font-weight: bold;
+		  }
+          
+       </style>
+
+	</head>
+
+	</head>
+    
+	<body>
+	  <header>
+	    <h1>21</h1>
+	  </header>
+	  <nav></nav>
+	  <br>
+      <br>
+	  <section>
+	    <article>
+		  <img src="Photos/blank.gif" >
+		  <img src="Photos/blank.gif" >
+		  <img src="Photos/blank.gif" ><br>
+		  <p id="PC"></p>
+		  <img src="Photos/blank.gif" onclick="kartiME(3);">
+		  <img src="Photos/blank.gif" onclick="kartiME(4);" >
+		  <img src="Photos/blank.gif" onclick="kartiME(5);" ><br>
+		  <p id="ME"></p>
+		  <h2 id="result_finish"></h2>
+		  <br><h1 id="result" ></h1>
+			<button id="btnHide" onclick="location.reload();">ხელახლა თამაში</button>
+		  <br><br>
+
+		  <script>
+          
+			let kartebi = ["6a.gif","6g.gif","6j.gif","6k.gif"
+			              ,"7a.gif","7g.gif","7j.gif","7k.gif"
+						  ,"8a.gif","8g.gif","8j.gif","8k.gif"
+						  ,"9a.gif","9g.gif","9j.gif","9k.gif"
+						  ,"10a.gif","10g.gif","10j.gif","10k.gif"
+						  ,"va.gif","vg.gif","vj.gif","vk.gif"
+			              ,"da.gif","dg.gif","dj.gif","dk.gif"
+						  ,"ka.gif","kg.gif","kj.gif","kk.gif"
+						  ,"ta.gif","tg.gif","tj.gif","tk.gif"
+						  ];
+			
+			let qulaPC = 0;
+			let qulaME = 0;
+			
+			let pc_karti1 = Math.floor(Math.random()*kartebi.length);
+			document.images[0].src = "Photos/" + kartebi[pc_karti1];
+			qulaPC = qulaPC + qula(pc_karti1);
+			let pc_karti2 = Math.floor(Math.random()*kartebi.length);
+			document.images[1].src = "Photos/" + kartebi[pc_karti2];
+			qulaPC = qulaPC + qula(pc_karti2);
+			let pc_karti3 = Math.floor(Math.random()*kartebi.length);
+			document.images[2].src = "Photos/" + kartebi[pc_karti3];
+			qulaPC = qulaPC + qula(pc_karti3);
+			document.getElementById("PC").innerHTML = qula(pc_karti1) + "+" +
+			                                          qula(pc_karti2) + "+" + 
+													  qula(pc_karti3) + " = " + qulaPC;
+			
+			
+		  let str_ME = "";
+		  function kartiME(J){
+		    me_karti = Math.floor(Math.random()*kartebi.length);
+			document.images[J].src = "Photos/" + kartebi[me_karti];
+			qulaME = qulaME + qula(me_karti);
+			if( J < 5){
+			  str_ME = str_ME + qula(me_karti) + " + ";
+			}
+			else{
+			  str_ME = str_ME + qula(me_karti) + " = " + qulaME;
+			  if(qulaME > qulaPC){
+
+			    document.getElementById("result_finish").innerHTML = "გილოცავთ, თქვენ მოიგეთ!!!";
+                            document.getElementById("result_finish").style.color = "green";
+			  }
+			  else{
+			    document.getElementById("result_finish").innerHTML = "სამწუხაროდ, თქვენ წააგეთ!";
+				document.getElementById("result_finish").style.color = "red";
+			  }
+			}
+			document.getElementById("ME").innerHTML = str_ME;
+			
+			
+		  }
+		  
+		  function qula(I){
+		    if(kartebi[I].substring(0,1) == "6"){
+			  Q = 6; //Qula
+			}
+			if(kartebi[I].substring(0,1) == "7"){
+			  Q = 7;
+			}
+			if(kartebi[I].substring(0,1) == "8"){
+			  Q = 8;
+			}
+			if(kartebi[I].substring(0,1) == "9"){
+			  Q = 9;
+			}
+			if(kartebi[I].substring(0,1) == "1"){
+			  Q = 10;
+			}
+			if(kartebi[I].substring(0,1) == "v"){
+			  Q = 2;
+			}
+			if(kartebi[I].substring(0,1) == "d"){
+			  Q = 3;
+			}
+			if(kartebi[I].substring(0,1) == "k"){
+			  Q = 4;
+			}
+			if(kartebi[I].substring(0,1) == "t"){
+			  Q = 11;
+			}
+			return Q;
+		  }
+		  </script>
+		  
+		</article>
+	  </section>
+	  
+	  <footer>
+	    2022 &copy; ყველა უფლება დაცულია
+	  </footer>
+		
+	</body>
+</html>
