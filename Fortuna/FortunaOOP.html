@@ -1,0 +1,193 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Fortuna OOP</title>
+
+		<style>
+        
+        	body {
+        
+        		background-color: #145A32;
+         	}
+
+         	section {
+         
+          		text-align: center;
+          
+         	}
+            
+		 	header {
+         
+		   		height: 50px;
+		   		background-color: #17202A;
+		   		text-align: center;
+           		color: white;
+		 	}
+         
+			footer {
+              	margin-top: 250px;
+		   		height: 30px;
+		   		background-color: #17202A;
+		   		text-align: center;
+           		color: white;
+		 	}
+            
+			nav {
+         
+		  		height: 30px;
+			}
+            
+			img {
+                border-radius: 7px;
+		  		width: 100px;
+			}
+        
+		</style>
+	</head>
+	<body>
+	  <header>
+	    <h1>Fortuna OOP</h1>
+	  </header>
+	  
+	  <nav></nav>
+	  
+	  <section>
+	    <article>
+		  <img src="Photos/blank.gif" >
+		  <img src="Photos/blank.gif" >
+		  <img src="Photos/blank.gif" >
+		  <img src="Photos/blank.gif" >
+		  <img src="Photos/blank.gif" >
+		  <br>
+          <br>
+          <br>
+		  <br><button onclick="change(0);" id="btnC">შეცვლა</button>
+		  <button onclick="Up();" id="UP">მაღალი</button>
+		  <button onclick="Doun();" id="DOUN">დაბალი</button>
+		  <br><h1 id="result" ></h1>
+		  <br><button id="btnHide" onclick="location.reload();">ხელახლა თამაში</button>
+		  <br><br>
+		  <script>
+			let kartebi = ["6a.gif","6g.gif","6j.gif","6k.gif"
+			              ,"7a.gif","7g.gif","7j.gif","7k.gif"
+						  ,"8a.gif","8g.gif","8j.gif","8k.gif"
+						  ,"9a.gif","9g.gif","9j.gif","9k.gif"
+						  ,"10a.gif","10g.gif","10j.gif","10k.gif"
+						  ,"va.gif","vg.gif","vj.gif","vk.gif"
+			              ,"da.gif","dg.gif","dj.gif","dk.gif"
+						  ,"ka.gif","kg.gif","kj.gif","kk.gif"
+						  ,"ta.gif","tg.gif","tj.gif","tk.gif"
+						  ];
+			
+			
+			
+			let RS = Math.floor(Math.random()*36);//პირველი კარტი RandomStart
+			let i = 0;
+			let qulaPC;
+			document.images[i].src = "Photos/" + kartebi[RS];
+			qulaPC = qula(RS);
+			console.log("qulaPC = " + qulaPC);
+			let ki_ara = true;
+			
+			function change(I){
+			  let RC = Math.floor(Math.random()*36)
+			  document.images[I].src = "Photos/" + kartebi[RC];
+			  //RandomChange
+			  document.getElementById("btnC").disabled = "yes";
+			}
+		    function Up(){
+			  i++;
+			  if(i <= 4){
+				  let RUp = Math.floor(Math.random()*36); //RandomUp
+				  document.images[i].src = "Photos/" + kartebi[RUp];
+				  qulaUp = qula(RUp);
+				  console.log("qulaUp = " + qulaUp);
+				  if(qulaUp > qulaPC){
+					document.getElementById("result").innerHTML = "მაღალია!";
+					qulaPC = qulaUp;
+					document.getElementById("result").style.color = "green";
+				  }
+				  else{
+					document.getElementById("result").innerHTML = "არის არის მაღალი, თამაში დამთავრებულია";
+					document.getElementById("btnC").disabled = "yes";
+					document.getElementById("UP").disabled = "yes";
+					document.getElementById("DOUN").disabled = "yes";
+					document.getElementById("result").style.color = "red";
+					document.getElementById("btnHide").style.visibility = "visible";
+				  }
+			  }
+			  else{
+			    document.getElementById("result").innerHTML = "გილოცავთ, თქვენ მოიგეთ!!!";
+				document.getElementById("result").style.color = "green";
+				document.getElementById("btnHide").style.visibility = "visible";
+			  }
+			}
+			function Doun(){
+			  i++;
+			  if(i <= 4){
+				  let RDoun = Math.floor(Math.random()*36); //RandomDoun
+				  document.images[i].src = "Photos/" + kartebi[RDoun];
+				  qulaDoun = qula(RDoun);
+				  console.log("qulaDoun = " + qulaDoun);
+				  if(qulaDoun < qulaPC){
+					document.getElementById("result").innerHTML = "დაბალია!";
+					qulaPC = qulaDoun;
+					document.getElementById("result").style.color = "green";
+				  }
+				  else{
+					document.getElementById("result").innerHTML = "არის არის დაბალი, თამაში დამთავრებულია";
+					document.getElementById("btnC").disabled = "yes";
+					document.getElementById("UP").disabled = "yes";
+					document.getElementById("DOUN").disabled = "yes";
+					document.getElementById("result").style.color = "red";
+					document.getElementById("btnHide").style.visibility = "visible";
+				  }
+			  }
+			  else{
+			    document.getElementById("result").innerHTML = "გილოცავთ, თქვენ მოიგეთ!!!";
+				document.getElementById("result").style.color = "green";
+				document.getElementById("btnHide").style.visibility = "visible";
+			  }
+			}
+		  function qula(I){
+		    if(kartebi[I].substring(0,1) == "6"){
+			  Q = 6; //Qula
+			}
+			if(kartebi[I].substring(0,1) == "7"){
+			  Q = 7;
+			}
+			if(kartebi[I].substring(0,1) == "8"){
+			  Q = 8;
+			}
+			if(kartebi[I].substring(0,1) == "9"){
+			  Q = 9;
+			}
+			if(kartebi[I].substring(0,1) == "1"){
+			  Q = 10;
+			}
+			if(kartebi[I].substring(0,1) == "v"){
+			  Q = 11;
+			}
+			if(kartebi[I].substring(0,1) == "d"){
+			  Q = 12;
+			}
+			if(kartebi[I].substring(0,1) == "k"){
+			  Q = 13;
+			}
+			if(kartebi[I].substring(0,1) == "t"){
+			  Q = 14;
+			}
+			return Q;
+		  }
+		  </script>
+		  
+		</article>
+	  </section>
+	  
+	  <footer>
+	    2022 &copy; ყველა უფლება დაცულია
+	  </footer>
+		
+	</body>
+</html>
